@@ -10,14 +10,14 @@
 
 #define MAX_PATH_LEN 4096
 
-#include "prompt.h"
-#include "tokens.h"
-#include "warp.h"
-#include "peek.h"
-#include "pastevents.h"
-#include "systemcommands.h"
-#include "proclore.h"
-#include "seek.h"
+#include "PartA/prompt.h"
+#include "PartA/tokens.h"
+#include "PartA/warp.h"
+#include "PartA/peek.h"
+#include "PartA/pastevents.h"
+#include "PartA/systemcommands.h"
+#include "PartA/proclore.h"
+#include "PartA/seek.h"
 
 #endif
 

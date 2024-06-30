@@ -1,4 +1,4 @@
-#include "headers.h"
+#include "../headers.h"
 
 void peek_function(char* str){
     struct dirent *directory_or_files_list;

@@ -1,4 +1,4 @@
-#include "headers.h"
+#include "../headers.h"
 
 void tokens_function(char* str){
 	int length = strlen(str);
