@@ -1,2 +1,2 @@
 main:
-	gcc -g main.c PartA/pastevents.c PartA/peek.c PartA/proclore.c PartA/prompt.c PartA/seek.c PartA/systemcommands.c PartA/tokens.c PartA/warp.c 
+	gcc -o shell -g main.c  Functions/pastevents.c Functions/peek.c Functions/proclore.c Functions/prompt.c Functions/seek.c Functions/systemcommands.c Functions/tokens.c Functions/warp.c

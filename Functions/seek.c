@@ -1,4 +1,4 @@
-#include "../headers.h"
+#include "../headers/main.h"
 
 
 void seek(char* str){

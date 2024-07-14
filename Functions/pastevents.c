@@ -1,4 +1,4 @@
-#include "../headers.h"
+#include "../headers/main.h"
 
 void pastevent_function(char* str){
     FILE *fp;

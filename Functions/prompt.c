@@ -1,4 +1,4 @@
-#include "../headers.h"
+#include "../headers/main.h"
 
 void prompt() {
     char hostname[MAX_PATH_LEN];
