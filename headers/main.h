@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <ctype.h>
 
 #define MAX_PATH_LEN 4096
 #define MAX_COMMANDS 10
