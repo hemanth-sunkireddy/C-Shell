@@ -14,36 +14,24 @@ void add_to_history(char *command)
     fclose(fp);
 }
 
-void execute_purge()
+void pastevent_function(char *detail)
 {
-
-    FILE *fp = fopen("pastevents.txt", "w");
-    if (fp == NULL)
+    FILE *file = fopen("pastevents.txt", "r+");
+    if (file == NULL)
     {
-        perror("Error opening pastevents.txt for purge");
+        perror("Error opening file");
         return;
     }
-    fclose(fp);
-    printf("Past events history purged.\n");
-}
 
-int pastevent_function(char *str)
-{
-    printf("STRING INITIAL: %s", str);
-    // Tokenize the input command.
-    char *token = strtok(str, " ");
-    printf("TOKEN: %s\n", token);
-    // Checking if the token is peek
-    if (token != NULL && strcmp(token, "pastevents") == 0)
+    // Empty: Print file content.
+    if (detail == NULL || strlen(detail) == 0 || strcmp(detail, "") == 0)
     {
-        printf("STRING: %s", str);
-        int purge_check = strcmp(str, "purge");
-        if(purge_check == 0){
-            printf("PURGE FOUND");
-            return 1; 
+        char line[256];
+        while (fgets(line, sizeof(line), file))
+        {
+            printf("%s", line);
         }
-        return 1; // Successfully executed pastevents command
+        fclose(file);
+        return;
     }
-
-    return -1; // pastevents command not present
 }

@@ -68,7 +68,8 @@ int main()
         {
             trimSpaces(commands_list[i]);
             add_to_history(commands_list[i]);
-
+            char copy_input[4096];
+            strcpy(copy_input, commands_list[i]);
             // Tokenize the input command.
             char *command = strtok(commands_list[i], " ");
             char *detail = strtok(NULL, "\n");
@@ -80,6 +81,31 @@ int main()
                     perror("getcwd");
                     return 1;
                 }
+            }
+            else if (strcmp(command, "peek") == 0)
+            {
+                peek_function(detail);
+                if (getcwd(current_working_directory, sizeof(current_working_directory)) == NULL)
+                {
+                    perror("getcwd");
+                    return 1;
+                }
+            }
+            else if (strcmp(command, "pastevents") == 0)
+            {
+                pastevent_function(detail);
+            }
+            else if (strcmp(command, "seek") == 0)
+            {
+                seek(detail);
+            }
+            else if (strcmp(command, "proclore") == 0)
+            {
+                proclore();
+            }
+            else
+            {
+                system_commands(copy_input);
             }
         }
     }
