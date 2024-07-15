@@ -1,4 +1,42 @@
 #include "headers/main.h"
+void trimSpaces(char *str)
+{
+    int start = 0;
+    int end = strlen(str) - 1;
+    int index = 0; // Index for modifying the string
+
+    // Trim leading spaces
+    while (isspace((unsigned char)str[start]))
+    {
+        start++;
+    }
+
+    // Collapse consecutive spaces into a single space
+    for (int i = start; i <= end; i++)
+    {
+        if (isspace((unsigned char)str[i]))
+        {
+            // Skip consecutive spaces
+            while (isspace((unsigned char)str[i + 1]))
+            {
+                i++;
+            }
+            str[index++] = ' '; // Replace consecutive spaces with a single space
+        }
+        else
+        {
+            str[index++] = str[i];
+        }
+    }
+
+    str[index] = '\0';
+
+    // Trim trailing spaces
+    while (index > 0 && isspace((unsigned char)str[index - 1]))
+    {
+        str[--index] = '\0';
+    }
+}
 
 int main()
 {
@@ -28,10 +66,15 @@ int main()
         // Processing inputs.
         for (int i = 0; i < num_tokens; ++i)
         {
-            // Call warp_function to process each command
-            if (warp_function(commands_list[i], current_working_directory) == 0)
+            trimSpaces(commands_list[i]);
+            add_to_history(commands_list[i]);
+
+            // Tokenize the input command.
+            char *command = strtok(commands_list[i], " ");
+            char *detail = strtok(NULL, "\n");
+            if (strcmp(command, "warp") == 0)
             {
-                // If warp_function succeeded, update the prompt with the new current directory
+                warp_function(detail, current_working_directory);
                 if (getcwd(current_working_directory, sizeof(current_working_directory)) == NULL)
                 {
                     perror("getcwd");
